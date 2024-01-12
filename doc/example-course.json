@@ -1,0 +1,53 @@
+{
+    "id" : "id course",
+    "title": "Panduan Kursus Belajar Renang",
+    "desc": "Kursus ini akan memberikan panduan langkah demi langkah untuk belajar renang bagi pemula.",
+    "duration": "8 minggu",
+    "lessons": 3,
+    "type_activity": "olahraga",
+    "theme_activity": "outdoor",
+    "subtitles": [
+        {
+            "id" : "id_sub",
+            "topic": "Teknik Pernafasan",
+            "shortdesc": "Belajar teknik pernafasan yang benar saat berenang.",
+            "content": {
+                "opening": "Langkah pertama dalam belajar renang adalah mempelajari teknik pernafasan yang benar.",
+                "step": [
+                    "Mengatur posisi tubuh secara vertikal di dalam air.",
+                    "Tarik napas secara dalam saat kepala berada di atas air.",
+                    "Keluarkan napas secara perlahan saat kepala berada di dalam air."
+                ],
+                "closing": "Dengan menguasai teknik pernafasan, Anda akan lebih nyaman dan efisien saat berenang."
+            }
+        },
+        {
+            "id" : "id_sub",
+            "topic": "Gerakan Kaki",
+            "shortdesc": "Panduan untuk menguasai gerakan kaki yang efektif saat berenang.",
+            "content": {
+                "opening": "Gerakan kaki yang benar merupakan hal yang penting dalam renang untuk menghasilkan dorongan yang kuat di dalam air.",
+                "step": [
+                    "Posisikan tubuh secara horizontal di dalam air.",
+                    "Tekuk lutut sedikit dan dorong air dengan telapak kaki.",
+                    "Luruskan kaki saat mengangkat dari air untuk dorongan maksimal."
+                ],
+                "closing": "Dengan mengikuti panduan ini, Anda akan dapat meningkatkan kecepatan dan efisiensi saat berenang."
+            }
+        },
+        {
+            "id" : "id_sub",
+            "topic": "Gerakan Tangan",
+            "shortdesc": "Panduan langkah demi langkah untuk menguasai gerakan tangan yang efektif.",
+            "content": {
+                "opening": "Gerakan tangan yang benar membantu Anda untuk meraih dan mendorong air dengan kuat.",
+                "step": [
+                    "Mengarahkan tangan ke depan dengan jari rapat.",
+                    "Balikkan tangan saat ditarik kembali untuk dorongan maksimal.",
+                    "Tekuk siku dan ulangi gerakan secara teratur."
+                ],
+                "closing": "Dengan berlatih gerakan tangan ini, Anda akan meningkatkan kekuatan dan kelincahan saat berenang."
+            }
+        }
+    ]
+}
