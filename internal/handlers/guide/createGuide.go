@@ -14,6 +14,8 @@ import (
 func CreateGuide(c *fiber.Ctx) error {
 	var promptReq models.PromptRequest
 
+	user := c.Locals("uid").(string)
+
 	// test
 	err := c.BodyParser(&promptReq)
 	if err != nil {
@@ -60,8 +62,8 @@ func CreateGuide(c *fiber.Ctx) error {
 
 	guideID := uuid.New()
 
-	_, err = tx.Exec("INSERT INTO course (id, prompt, title, desciption, type_activity, theme_activity) VALUES (?, ?, ?, ?, ?, ?)",
-		guideID.String(), prompt, title, desc, typeActivity, themeActivity)
+	_, err = tx.Exec("INSERT INTO course (id, user_id, prompt, title, desciption, type_activity, theme_activity) VALUES (?, ?, ?, ?, ?, ?, ?)",
+		guideID.String(), user, prompt, title, desc, typeActivity, themeActivity)
 	if err != nil {
 		tx.Rollback()
 		return helper.ResponseJson(c, 500, "Error transaction guide", err.Error())

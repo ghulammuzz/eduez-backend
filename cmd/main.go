@@ -20,7 +20,6 @@ func main() {
 		AppName: "EduZe",
 		// Prefork: true,
 	})
-	// app.Use(middleware.FirebaseAuth())
 	routes.SetupGuideRoutes(app)
 
 	log.Fatal(app.Listen(":3000"))

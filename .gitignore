@@ -1,7 +1,9 @@
-nahkukasinamafilenya.json
+infra/ansible/**
+cred.json
 example-course.sql
 schema.sql
 .env
-.ssh
+.ssh.md
 eduze.db
 settings.json
+.vscode

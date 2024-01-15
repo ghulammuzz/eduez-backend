@@ -1,1 +1,59 @@
-wait
+---
+- name: Setup Nginx, Copy Files, and Configure systemd
+  hosts: target
+  become: true
+  tasks:
+    - name: Install Nginx
+      yum:
+        name: nginx
+        state: present
+
+    - name: Copy Nginx Configuration
+      copy:
+        src: /home/ghulammuzz/bored-code/go/natice/crud/config/nginx/go.conf
+        dest: /etc/nginx/conf.d/
+      notify: Restart Nginx
+
+    - name: Copy Go Artifact
+      copy:
+        src: /home/ghulammuzz/bored-code/go/natice/crud/artifact/eduze-dev-1.4
+        dest: /home/ec2-user/
+
+    - name: Copy Cred File
+      copy:
+        src: /home/ghulammuzz/bored-code/go/natice/crud/cred.json
+        dest: /home/ec2-user/
+
+    - name: Copy Database File
+      copy:
+        src: /home/ghulammuzz/bored-code/go/natice/crud/eduze.db
+        dest: /home/ec2-user/
+
+    - name: Setup systemd
+      copy:
+        src: /home/ghulammuzz/bored-code/go/natice/crud/config/systemd/eduze.service
+        dest: /lib/systemd/system/
+      notify: Reload systemd
+
+    - name: Start and Enable eduze.service
+      systemd:
+        name: eduze
+        state: started
+        enabled: yes
+
+    - name: Wait for API to be available
+      wait_for:
+        host: 13.236.163.170
+        port: 3000
+        timeout: 60
+        state: started
+
+  handlers:
+    - name: Restart Nginx
+      service:
+        name: nginx
+        state: restarted
+
+    - name: Reload systemd
+      systemd:
+        daemon_reload: yes

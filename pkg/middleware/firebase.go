@@ -2,6 +2,7 @@ package middleware
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"native/crus/pkg/helper"
 	"strings"
@@ -15,7 +16,7 @@ import (
 var authClient *auth.Client
 
 func init() {
-	firebaseCred := "../doc/nahkukasinamafilenya.json"
+	firebaseCred := "cred.json"
 
 	ctx := context.Background()
 	opt := option.WithCredentialsFile(firebaseCred)
@@ -46,14 +47,17 @@ func FirebaseAuth() fiber.Handler {
 			return helper.ResponseJson(c, 401, "Firebase 401 2", nil)
 		}
 		token := parts[1]
+		// fmt.Println(token)
 
 		claims, err := authClient.VerifyIDToken(context.Background(), token)
 		if err != nil {
-			return helper.ResponseJson(c, 401, "Firebase 401 3", nil)
+			return helper.ResponseJson(c, 401, "Firebase 401 3", err.Error())
 		}
+
+		c.Locals("uid", claims.UID)
+
 		// print id and name
-		log.Println("[Id]" + claims.Claims["user_id"].(string))
-		log.Println("[Name]" + claims.Claims["name"].(string))
+		fmt.Println("Id " + claims.UID)
 
 		return c.Next()
 	}

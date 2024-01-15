@@ -1,0 +1,12 @@
+[Unit]
+Description=eduze
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=5s
+ExecStart=/home/ec2-user/app
+WorkingDirectory=/home/ec2-user
+
+[Install]
+WantedBy=multi-user.target
